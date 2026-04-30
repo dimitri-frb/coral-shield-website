@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coral Shield — Three Design Directions</title>
+<title data-en="Coral Shield — Three Design Directions">Coral Shield — Tres Direcciones de Diseño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Caveat:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -131,9 +131,37 @@
     .wrap { padding: 40px 20px; }
     header { margin-bottom: 50px; }
   }
+
+  /* Language switcher */
+  .lang-switch {
+    position: fixed; bottom: 22px; right: 22px; z-index: 250;
+    display: inline-flex; align-items: center; gap: 4px;
+    background: white;
+    padding: 5px 8px; border-radius: 100px;
+    box-shadow: 0 4px 22px rgba(0,0,0,.14);
+    font-family: 'Inter', sans-serif;
+  }
+  .lang-switch button {
+    background: none; border: none; cursor: pointer;
+    font-size: 11px; letter-spacing: 1.5px; font-weight: 700;
+    padding: 6px 11px; color: #2A3942;
+    border-radius: 100px;
+    line-height: 1;
+    opacity: .5; transition: opacity .25s ease, background .25s ease, color .25s ease;
+  }
+  .lang-switch button:hover { opacity: .85; }
+  .lang-switch button.active {
+    opacity: 1; color: white; background: #F2645F;
+  }
+  .lang-switch .div { color: #2A3942; opacity: .2; font-size: 11px; padding: 0 2px; line-height: 1; }
 </style>
 </head>
 <body>
+<div class="lang-switch" role="group" aria-label="Language">
+  <button data-lang="es" type="button" class="active">ES</button>
+  <span class="div">·</span>
+  <button data-lang="en" type="button">EN</button>
+</div>
 <div class="pattern-bg">
   <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg"><use href="assets/coral-motif.svg#motif"/></svg>
 </div>
@@ -141,8 +169,8 @@
   <header>
     <img src="assets/logo-positive.png" alt="Coral Shield Asset Management">
     <div class="tagline">coral in motion</div>
-    <h1>Three <em>design directions</em></h1>
-    <p class="subtitle">Three takes on the new Coral Shield website — same content, same structure, three different personalities. Built around your existing brand: the coral red, the cream, the blue, the motif. Click any direction to explore the full site.</p>
+    <h1 data-en="Three &lt;em&gt;design directions&lt;/em&gt;">Tres <em>direcciones de diseño</em></h1>
+    <p class="subtitle" data-en="Three takes on the new Coral Shield website — same content, same structure, three different personalities. Built around your existing brand: the coral red, the cream, the blue, the motif. Click any direction to explore the full site.">Tres propuestas para la nueva web de Coral Shield — mismo contenido, misma estructura, tres personalidades distintas. Construidas sobre vuestra identidad: el coral, el crema, el azul, el motivo. Haz clic en cualquiera para explorarla.</p>
   </header>
 
   <div class="grid">
@@ -150,13 +178,13 @@
       <div class="preview preview-1">
         <div class="motif motif-dark"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
         <img src="assets/logo-positive.png" alt="Coral Shield" class="logo-mini">
-        <span class="badge">Option 01</span>
+        <span class="badge" data-en="Option 01">Opción 01</span>
       </div>
       <div class="body">
-        <div class="style-tag">Editorial · Magazine</div>
-        <h2>The Editorial</h2>
-        <p>Cinematic, like a luxury travel magazine. Alternating cream and coral panels, classical serif typography, full-bleed photography. Quiet confidence.</p>
-        <span class="cta">View this direction</span>
+        <div class="style-tag" data-en="Editorial · Magazine">Editorial · Revista</div>
+        <h2 data-en="The Editorial">Editorial</h2>
+        <p data-en="Cinematic, like a luxury travel magazine. Alternating cream and coral panels, classical serif typography, full-bleed photography. Quiet confidence.">Cinematográfica, como una revista de lujo. Paneles alternados de crema y coral, tipografía serif clásica, fotografía a sangre. Confianza serena.</p>
+        <span class="cta" data-en="View this direction">Ver esta dirección</span>
       </div>
     </a>
 
@@ -164,13 +192,13 @@
       <div class="preview preview-2">
         <div class="motif motif-dark"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
         <img src="assets/logo-positive.png" alt="Coral Shield" class="logo-mini">
-        <span class="badge">Option 02</span>
+        <span class="badge" data-en="Option 02">Opción 02</span>
       </div>
       <div class="body">
-        <div class="style-tag">Architectural · Minimal</div>
-        <h2>The Architect</h2>
-        <p>Swiss precision on cream. Strict grid, structural typography, the coral motif used like a watermark. Tailored for serious capital and serious craft.</p>
-        <span class="cta">View this direction</span>
+        <div class="style-tag" data-en="Architectural · Minimal">Arquitectónico · Minimal</div>
+        <h2 data-en="The Architect">El Arquitecto</h2>
+        <p data-en="Swiss precision on cream. Strict grid, structural typography, the coral motif used like a watermark. Tailored for serious capital and serious craft.">Precisión suiza sobre crema. Retícula estricta, tipografía estructural, el motivo coral como filigrana. Hecho a medida para capital serio y oficio serio.</p>
+        <span class="cta" data-en="View this direction">Ver esta dirección</span>
       </div>
     </a>
 
@@ -178,20 +206,53 @@
       <div class="preview preview-3">
         <div class="motif"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
         <img src="assets/logo-coral.png" alt="Coral Shield" class="logo-mini">
-        <span class="badge">Option 03 · Bold</span>
+        <span class="badge" data-en="Option 03 · Bold">Opción 03 · Bold</span>
       </div>
       <div class="body">
-        <div class="style-tag">Bold Statement · Campaign</div>
-        <h2>The Statement</h2>
+        <div class="style-tag" data-en="Bold Statement · Campaign">Statement Bold · Campaña</div>
+        <h2 data-en="The Statement">El Statement</h2>
         <p>Built directly from your campaign. Full coral panels, oversized motif, the white logo, "coral in motion" everywhere. Loud, confident, unmistakable.</p>
-        <span class="cta">View this direction</span>
+        <span class="cta" data-en="View this direction">Ver esta dirección</span>
       </div>
     </a>
   </div>
 
   <footer>
-    Internal preview · <a href="https://www.coralshield.es/">current site</a>
+    Internal preview · <a href="https://www.coralshield.es/" data-en="current site">web actual</a>
   </footer>
 </div>
+<script>
+(function(){
+  // Capture initial Spanish content into data-es so we can switch back
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    if (el.tagName === 'TITLE') {
+      el.setAttribute('data-es', el.textContent);
+    } else {
+      el.setAttribute('data-es', el.innerHTML);
+    }
+  });
+  function apply(lang){
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + lang);
+      if (v !== null) {
+        if (el.tagName === 'TITLE') el.textContent = v;
+        else el.innerHTML = v;
+      }
+    });
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('csl_lang', lang); } catch(e){}
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('.lang-switch [data-lang]');
+    if (b) apply(b.getAttribute('data-lang'));
+  });
+  var saved = 'es';
+  try { saved = localStorage.getItem('csl_lang') || 'es'; } catch(e){}
+  apply(saved);
+})();
+</script>
 </body>
 </html>

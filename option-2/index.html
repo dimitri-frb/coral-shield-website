@@ -375,19 +375,47 @@
     .foot-grid { grid-template-columns: 1fr 1fr; }
     .copyright { flex-direction: column; gap: 6px; }
   }
+
+  /* Language switcher */
+  .lang-switch {
+    position: fixed; bottom: 22px; right: 22px; z-index: 250;
+    display: inline-flex; align-items: center; gap: 4px;
+    background: white;
+    padding: 5px 8px; border-radius: 100px;
+    box-shadow: 0 4px 22px rgba(0,0,0,.14);
+    font-family: 'Inter', sans-serif;
+  }
+  .lang-switch button {
+    background: none; border: none; cursor: pointer;
+    font-size: 11px; letter-spacing: 1.5px; font-weight: 700;
+    padding: 6px 11px; color: #2A3942;
+    border-radius: 100px;
+    line-height: 1;
+    opacity: .5; transition: opacity .25s ease, background .25s ease, color .25s ease;
+  }
+  .lang-switch button:hover { opacity: .85; }
+  .lang-switch button.active {
+    opacity: 1; color: white; background: #F2645F;
+  }
+  .lang-switch .div { color: #2A3942; opacity: .2; font-size: 11px; padding: 0 2px; line-height: 1; }
 </style>
 </head>
 <body>
+<div class="lang-switch" role="group" aria-label="Language">
+  <button data-lang="es" type="button" class="active">ES</button>
+  <span class="div">·</span>
+  <button data-lang="en" type="button">EN</button>
+</div>
 
 <nav id="nav">
   <a class="brand" href="#top"><img src="../assets/logo-positive.png" alt="Coral Shield"></a>
   <ul>
-    <li><a href="#mission">Philosophy</a></li>
-    <li><a href="#structure">Structure</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#projects">Projects</a></li>
+    <li><a href="#mission" data-en="Philosophy">Filosofía</a></li>
+    <li><a href="#structure" data-en="Structure">Estructura</a></li>
+    <li><a href="#team" data-en="Team">Equipo</a></li>
+    <li><a href="#projects" data-en="Projects">Proyectos</a></li>
   </ul>
-  <div class="right-action"><a href="../">← Options</a></div>
+  <div class="right-action"><a href="../" data-en="← Options">← Opciones</a></div>
 </nav>
 
 <!-- Hero -->
@@ -396,20 +424,20 @@
 
   <div class="hero-grid">
     <div>
-      <div class="hero-eyebrow">Coral Shield · Asset Management</div>
-      <h1 class="display">Real estate,<br><span class="accent">stewarded.</span></h1>
+      <div class="hero-eyebrow" data-en="Coral Shield · Asset Management">Coral Shield · Asset Management</div>
+      <h1 class="display" data-en="Real estate,&lt;br&gt;&lt;span class=&quot;accent&quot;&gt;stewarded.&lt;/span&gt;">Inmobiliario,<br><span class="accent">cuidado.</span></h1>
     </div>
     <div class="hero-meta">
       <span class="script">coral in motion</span>
-      <p>A boutique asset manager building, protecting and growing luxury real estate capital along the Costa del Sol — from acquisition to commercialization, under one roof.</p>
+      <p data-en="A boutique asset manager building, protecting and growing luxury real estate capital along the Costa del Sol — from acquisition to commercialization, under one roof.">Un asset manager boutique que construye, protege y hace crecer el capital inmobiliario de lujo en la Costa del Sol — de la adquisición a la comercialización, bajo un mismo techo.</p>
     </div>
   </div>
 
   <div class="hero-bottom">
     <div>Founded<strong>Marbella</strong></div>
     <div>Coverage<strong>Costa del Sol</strong></div>
-    <div>Discipline<strong>Asset · Engineering · Build</strong></div>
-    <div>Mandates<strong>By introduction</strong></div>
+    <div>Discipline<strong data-en="Asset · Engineering · Build">Asset · Ingeniería · Obra</strong></div>
+    <div>Mandates<strong data-en="By introduction">Por presentación</strong></div>
   </div>
 </section>
 
@@ -418,16 +446,16 @@
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
   <div class="gridrule">
     <div class="gridrule-side">
-      <div class="side-label">01 — Philosophy</div>
-      <div class="side-num">The Coral Shield Way</div>
+      <div class="side-label" data-en="01 — Philosophy">01 — Filosofía</div>
+      <div class="side-num" data-en="The Coral Shield Way">El Camino Coral Shield</div>
     </div>
     <div>
       <h2 class="title">An <em>operator,</em> not a broker.</h2>
       <div class="mission-content">
         <div class="mission-text">
-          <p class="lead">We do not sell property. We build, protect and grow real estate capital for a select group of clients along the Costa del Sol — with sensitivity, precision, and absolute discretion.</p>
-          <p>Founded on the conviction that wealth in real estate is not a transaction but a relationship — between a client, a place, and a generation of craft — Coral Shield brings together asset management, engineering, construction, and project leadership under one roof.</p>
-          <p>The result is a single, accountable partner from the moment a property is identified to the day its first owner steps inside.</p>
+          <p class="lead" data-en="We do not sell property. We build, protect and grow real estate capital for a select group of clients along the Costa del Sol — with sensitivity, precision, and absolute discretion.">No vendemos propiedades. Construimos, protegemos y hacemos crecer el capital inmobiliario para un grupo selecto de clientes en la Costa del Sol — con sensibilidad, precisión y absoluta discreción.</p>
+          <p data-en="Founded on the conviction that wealth in real estate is not a transaction but a relationship — between a client, a place, and a generation of craft — Coral Shield brings together asset management, engineering, construction, and project leadership under one roof.">Nacida del convencimiento de que la riqueza inmobiliaria no es una transacción sino una relación — entre un cliente, un lugar y una generación de oficio — Coral Shield reúne bajo un mismo techo la gestión de activos, la ingeniería, la construcción y la dirección de proyecto.</p>
+          <p data-en="The result is a single, accountable partner from the moment a property is identified to the day its first owner steps inside.">El resultado: un único interlocutor responsable, desde el momento en que se identifica una propiedad hasta el día en que su primer propietario cruza el umbral.</p>
         </div>
         <div class="mission-image">
           <div class="mission-image-caption">Sierra Blanca · Marbella</div>
@@ -441,38 +469,38 @@
 <section class="band">
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
   <span class="script">coral in motion</span>
-  <blockquote>To elevate the management of capital onto a more <em>human, deeper,</em> and highly qualified plane.</blockquote>
+  <blockquote data-en="To elevate the management of capital onto a more &lt;em&gt;human, deeper,&lt;/em&gt; and highly qualified plane.">Elevar la gestión del capital a un plano más <em>humano, profundo</em> y altamente cualificado.</blockquote>
 </section>
 
 <!-- Structure -->
 <section class="structure" id="structure">
   <div class="gridrule">
     <div class="gridrule-side">
-      <div class="side-label">02 — Structure</div>
-      <div class="side-num">Four disciplines, one team</div>
+      <div class="side-label" data-en="02 — Structure">02 — Estructura</div>
+      <div class="side-num" data-en="Four disciplines, one team">Cuatro disciplinas, un equipo</div>
     </div>
     <div>
-      <h2 class="title">A single firm,<br>from <em>land</em> to <em>keys.</em></h2>
+      <h2 class="title" data-en="A single firm,&lt;br&gt;from &lt;em&gt;land&lt;/em&gt; to &lt;em&gt;keys.&lt;/em&gt;">Una sola firma,<br>del <em>terreno</em> a las <em>llaves.</em></h2>
       <div class="struct-grid">
         <div class="struct">
           <div class="struct-num">— 01</div>
           <h3><span class="division">Coral Shield</span>Asset Management</h3>
-          <p>Acquisition strategy, financial structuring, capital protection and long-term performance — built around the client's wider patrimony.</p>
+          <p data-en="Acquisition strategy, financial structuring, capital protection and long-term performance — built around the client's wider patrimony.">Estrategia de adquisición, estructuración financiera, protección del capital y rendimiento a largo plazo — construido en torno al patrimonio global del cliente.</p>
         </div>
         <div class="struct">
           <div class="struct-num">— 02</div>
           <h3><span class="division">Coral Works</span>Engineering & Design</h3>
-          <p>Technical due diligence, design coordination, architectural oversight. Every project begins with engineered feasibility.</p>
+          <p data-en="Technical due diligence, design coordination, architectural oversight. Every project begins with engineered feasibility.">Due diligence técnica, coordinación de diseño, supervisión arquitectónica. Cada proyecto comienza con la viabilidad ingenierizada.</p>
         </div>
         <div class="struct">
           <div class="struct-num">— 03</div>
           <h3><span class="division">Coral Works</span>Construction</h3>
-          <p>We build directly — controlling cost, calendar and craftsmanship in partnership with the finest developers of the coast.</p>
+          <p data-en="We build directly — controlling cost, calendar and craftsmanship in partnership with the finest developers of the coast.">Edificamos directamente — controlando coste, calendario y oficio, junto a los mejores promotores de la costa.</p>
         </div>
         <div class="struct">
           <div class="struct-num">— 04</div>
           <h3><span class="division">Coral Shield</span>Project Management</h3>
-          <p>From planning permissions to keys-in-hand and final commercialization, a single director is accountable across every gate.</p>
+          <p data-en="From planning permissions to keys-in-hand and final commercialization, a single director is accountable across every gate.">Desde las licencias hasta la entrega de llaves y la comercialización final, un único director rinde cuentas en cada hito.</p>
         </div>
       </div>
     </div>
@@ -484,35 +512,35 @@
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
   <div class="gridrule">
     <div class="gridrule-side">
-      <div class="side-label">03 — Team</div>
-      <div class="side-num">A small atelier</div>
+      <div class="side-label" data-en="03 — Team">03 — Equipo</div>
+      <div class="side-num" data-en="A small atelier">Un pequeño estudio</div>
     </div>
     <div>
-      <h2 class="title">The <em>operators</em>behind every mandate.</h2>
+      <h2 class="title" data-en="The &lt;em&gt;operators&lt;/em&gt;behind every mandate.">Los <em>operadores</em>detrás de cada mandato.</h2>
       <div class="team-grid">
         <div class="member">
           <div class="avatar"><div class="placeholder">CS</div></div>
-          <h4>[Founder Name]</h4>
-          <div class="role">Founder · CEO</div>
-          <p>Two decades structuring real estate capital across Madrid, Paris and the Costa del Sol.</p>
+          <h4 data-en="[Founder Name]">[Nombre Fundador]</h4>
+          <div class="role" data-en="Founder · CEO">Fundador · CEO</div>
+          <p data-en="Two decades structuring real estate capital across Madrid, Paris and the Costa del Sol.">Dos décadas estructurando capital inmobiliario en Madrid, París y la Costa del Sol.</p>
         </div>
         <div class="member">
           <div class="avatar"><div class="placeholder">CS</div></div>
-          <h4>[Partner Name]</h4>
-          <div class="role">Partner · Asset Management</div>
-          <p>Former private banker. Builds the financial architecture behind every Coral Shield project.</p>
+          <h4 data-en="[Partner Name]">[Nombre Socio]</h4>
+          <div class="role" data-en="Partner · Asset Management">Socio · Asset Management</div>
+          <p data-en="Former private banker. Builds the financial architecture behind every Coral Shield project.">Ex-banquero privado. Construye la arquitectura financiera de cada proyecto Coral Shield.</p>
         </div>
         <div class="member">
           <div class="avatar"><div class="placeholder">CW</div></div>
-          <h4>[Director Name]</h4>
-          <div class="role">Director · Coral Works</div>
-          <p>Civil engineer, twenty years on Costa del Sol sites. Leads engineering and construction.</p>
+          <h4 data-en="[Director Name]">[Nombre Director]</h4>
+          <div class="role" data-en="Director · Coral Works">Director · Coral Works</div>
+          <p data-en="Civil engineer, twenty years on Costa del Sol sites. Leads engineering and construction.">Ingeniero civil, veinte años en obras de la Costa del Sol. Dirige ingeniería y construcción.</p>
         </div>
         <div class="member">
           <div class="avatar"><div class="placeholder">CS</div></div>
-          <h4>[Lead Name]</h4>
-          <div class="role">Head of Projects</div>
-          <p>Project lead and single point of contact, from first acquisition through final delivery.</p>
+          <h4 data-en="[Lead Name]">[Nombre Responsable]</h4>
+          <div class="role" data-en="Head of Projects">Director de Proyectos</div>
+          <p data-en="Project lead and single point of contact, from first acquisition through final delivery.">Responsable de proyecto y punto único de contacto, desde la primera adquisición hasta la entrega final.</p>
         </div>
       </div>
     </div>
@@ -524,36 +552,36 @@
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
   <div class="gridrule">
     <div class="gridrule-side">
-      <div class="side-label">04 — Projects</div>
-      <div class="side-num">A few homes in motion</div>
+      <div class="side-label" data-en="04 — Projects">04 — Proyectos</div>
+      <div class="side-num" data-en="A few homes in motion">Algunas casas en movimiento</div>
     </div>
     <div>
-      <h2 class="title">Currently <em>under</em>our hand.</h2>
+      <h2 class="title" data-en="Currently &lt;em&gt;under&lt;/em&gt;our hand.">Actualmente <em>bajo</em>nuestra mano.</h2>
 
       <div class="project-list">
         <div class="project-row">
           <div class="pnum">— 01</div>
           <div class="pname">Villa <em>Aurora</em></div>
-          <div class="ploc">Marbella · La Zagaleta</div>
-          <div class="pmeta">2,400 m² · 2026<br><strong>€18M range</strong></div>
+          <div class="ploc" data-en="Marbella · La Zagaleta">Marbella · La Zagaleta</div>
+          <div class="pmeta">2,400 m² · 2026<br><strong data-en="€18M range">Rango €18M</strong></div>
         </div>
         <div class="project-row">
           <div class="pnum">— 02</div>
           <div class="pname">Casa <em>del Mar</em></div>
-          <div class="ploc">Estepona · Beachfront</div>
-          <div class="pmeta">1,100 m² each · 2027<br><strong>€12M range</strong></div>
+          <div class="ploc" data-en="Estepona · Beachfront">Estepona · Primera línea</div>
+          <div class="pmeta">1,100 m² each · 2027<br><strong data-en="€12M range">Rango €12M</strong></div>
         </div>
         <div class="project-row">
           <div class="pnum">— 03</div>
           <div class="pname">Residencia <em>Olivar</em></div>
-          <div class="ploc">Benahavís · Hillside</div>
-          <div class="pmeta">3 villas · 2025<br><strong>€9M range</strong></div>
+          <div class="ploc" data-en="Benahavís · Hillside">Benahavís · Ladera</div>
+          <div class="pmeta">3 villas · 2025<br><strong data-en="€9M range">Rango €9M</strong></div>
         </div>
         <div class="project-row">
           <div class="pnum">— 04</div>
-          <div class="pname">[<em>Project Name</em>]</div>
-          <div class="ploc">[Location]</div>
-          <div class="pmeta">In acquisition<br><strong>Confidential</strong></div>
+          <div class="pname" data-en="[&lt;em&gt;Project Name&lt;/em&gt;]">[<em>Nombre Proyecto</em>]</div>
+          <div class="ploc" data-en="[Location]">[Ubicación]</div>
+          <div class="pmeta">In acquisition<br><strong data-en="Confidential">Confidencial</strong></div>
         </div>
       </div>
 
@@ -578,10 +606,10 @@
   <div class="works-grid">
     <div>
       <div class="label-w">Coral Works · Construction & Engineering</div>
-      <h2>The hands behind <em>every project.</em></h2>
+      <h2 data-en="The hands behind &lt;em&gt;every project.&lt;/em&gt;">Las manos detrás de <em>cada proyecto.</em></h2>
     </div>
     <div>
-      <p>Coral Works is our in-house construction and engineering arm. Costing, calendar, craftsmanship — controlled directly, with no general contractor between us and the client. The reason every Coral Shield project lands on time, on budget, and on standard.</p>
+      <p data-en="Coral Works is our in-house construction and engineering arm. Costing, calendar, craftsmanship — controlled directly, with no general contractor between us and the client. The reason every Coral Shield project lands on time, on budget, and on standard.">Coral Works es nuestro brazo de construcción e ingeniería interno. Coste, calendario, oficio — controlados directamente, sin contratista general entre nosotros y el cliente. La razón por la que cada proyecto Coral Shield se entrega a tiempo, en presupuesto y al estándar.</p>
       <div class="tagline-w">coral in motion</div>
     </div>
   </div>
@@ -595,30 +623,30 @@
       <div class="script">coral in motion</div>
     </div>
     <div>
-      <h5>Studio</h5>
+      <h5 data-en="Studio">Estudio</h5>
       <ul>
         <li>Marbella</li>
-        <li>Málaga · Spain</li>
+        <li data-en="Málaga · Spain">Málaga · España</li>
         <li><a href="https://www.coralshield.es">coralshield.es</a></li>
       </ul>
     </div>
     <div>
-      <h5>Contact</h5>
+      <h5 data-en="Contact">Contacto</h5>
       <ul>
         <li>hello@coralshield.es</li>
         <li>+34 ___ ___ ___</li>
       </ul>
     </div>
     <div>
-      <h5>Discretion</h5>
+      <h5 data-en="Discretion">Discreción</h5>
       <ul>
-        <li>By introduction only.</li>
+        <li data-en="By introduction only.">Solo por presentación.</li>
       </ul>
     </div>
   </div>
   <div class="copyright">
-    <span>© Coral Shield Asset Management · All rights reserved.</span>
-    <a href="../">View other design directions →</a>
+    <span data-en="© Coral Shield Asset Management · All rights reserved.">© Coral Shield Asset Management · Todos los derechos reservados.</span>
+    <a href="../" data-en="View other design directions →">Ver otras direcciones →</a>
   </div>
 </footer>
 
@@ -629,5 +657,38 @@
   });
 </script>
 
+<script>
+(function(){
+  // Capture initial Spanish content into data-es so we can switch back
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    if (el.tagName === 'TITLE') {
+      el.setAttribute('data-es', el.textContent);
+    } else {
+      el.setAttribute('data-es', el.innerHTML);
+    }
+  });
+  function apply(lang){
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + lang);
+      if (v !== null) {
+        if (el.tagName === 'TITLE') el.textContent = v;
+        else el.innerHTML = v;
+      }
+    });
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('csl_lang', lang); } catch(e){}
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('.lang-switch [data-lang]');
+    if (b) apply(b.getAttribute('data-lang'));
+  });
+  var saved = 'es';
+  try { saved = localStorage.getItem('csl_lang') || 'es'; } catch(e){}
+  apply(saved);
+})();
+</script>
 </body>
 </html>
