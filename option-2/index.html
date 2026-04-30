@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coral Shield · Asset Management — Costa del Sol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #F2645F;
+    --coral-deep: #D9514C;
+    --cream: #EAE2C8;
+    --cream-soft: #F4EDD6;
+    --cream-line: #D9CFAA;
+    --blue: #567684;
+    --blue-deep: #3F5C6A;
+    --ink: #2A3942;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream-soft);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+    overflow-x: hidden;
+    font-weight: 300;
+  }
+  .script { font-family: 'Caveat', cursive; }
+
+  /* Reusable motif */
+  .motif-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .motif-bg svg { position: absolute; bottom: -8%; left: -10%; width: 90%; height: auto; }
+
+  /* Nav — minimal, all on cream */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 56px;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    background: rgba(244,237,214,.85); backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .35s ease, padding .35s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--cream-line); padding: 14px 56px; }
+  nav .brand img { height: 32px; }
+  nav .brand { justify-self: start; }
+  nav ul {
+    display: flex; gap: 40px; list-style: none; align-items: center;
+    justify-self: center;
+  }
+  nav a {
+    color: var(--ink); text-decoration: none; font-size: 12px;
+    letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+    transition: color .25s ease;
+    position: relative;
+  }
+  nav a:hover { color: var(--coral); }
+  nav .right-action { justify-self: end; }
+  nav .right-action a {
+    color: var(--coral); border: 1px solid var(--coral); padding: 9px 18px;
+    transition: background .25s ease, color .25s ease;
+  }
+  nav .right-action a:hover { background: var(--coral); color: white; }
+
+  /* Hero — full bleed cream with structural type */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream-soft);
+    position: relative;
+    padding: 22vh 8vw 12vh;
+    overflow: hidden;
+  }
+  .hero .motif-bg svg { color: var(--cream); opacity: .55; bottom: -12%; left: 35%; width: 75%; transform: rotate(8deg); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; position: relative; z-index: 2; }
+  .hero-eyebrow {
+    color: var(--coral); font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 36px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; flex: 1; height: 1px; background: var(--coral); opacity: .5; max-width: 60px;
+  }
+  .hero-eyebrow::after { display: none; }
+  h1.display {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: clamp(56px, 9vw, 156px);
+    line-height: .95;
+    letter-spacing: -4px;
+    color: var(--blue);
+    margin-bottom: 0;
+  }
+  h1.display .accent { color: var(--coral); font-style: normal; font-weight: 300; }
+  .hero-meta {
+    border-top: 1px solid var(--ink);
+    padding-top: 20px;
+    align-self: end;
+  }
+  .hero-meta p {
+    font-size: 14.5px; color: var(--ink); line-height: 1.7; max-width: 380px;
+    font-weight: 400;
+  }
+  .hero-meta .script { color: var(--coral); font-size: 22px; margin-bottom: 14px; display: block; font-weight: 500; }
+  .hero-bottom {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 14vh;
+    padding-top: 28px;
+    border-top: 1px solid var(--cream-line);
+    position: relative; z-index: 2;
+  }
+  .hero-bottom div { font-size: 11px; color: var(--ink); letter-spacing: 2px; text-transform: uppercase; }
+  .hero-bottom strong { display: block; font-size: 22px; font-weight: 300; color: var(--coral); margin-top: 6px; letter-spacing: 0; text-transform: none; font-family: 'Inter', sans-serif; }
+
+  /* Sections */
+  section { padding: 140px 8vw; position: relative; }
+  .gridrule {
+    display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start;
+  }
+  .gridrule-side { position: sticky; top: 120px; }
+  .side-label {
+    color: var(--coral);
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 8px;
+    border-top: 1px solid var(--coral);
+  }
+  .side-num {
+    font-size: 11px; color: var(--ink); letter-spacing: 2px;
+    margin-top: 12px;
+  }
+  h2.title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: clamp(40px, 5.5vw, 80px);
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--blue);
+    margin-bottom: 50px;
+    max-width: 1000px;
+  }
+  h2.title em { font-style: normal; color: var(--coral); }
+
+  /* Mission */
+  .mission { background: var(--cream-soft); border-bottom: 1px solid var(--cream-line); }
+  .mission .motif-bg svg { color: var(--cream); opacity: .4; right: -15%; left: auto; bottom: -15%; }
+  .mission-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .mission-text p.lead {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 36px;
+    letter-spacing: -.5px;
+  }
+  .mission-text p { font-size: 15px; line-height: 1.85; color: #44525E; max-width: 520px; font-weight: 400; }
+  .mission-text p + p { margin-top: 18px; }
+  .mission-image {
+    height: 640px;
+    background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=85') center/cover;
+    position: relative;
+  }
+  .mission-image-caption {
+    position: absolute; bottom: 0; left: 0;
+    background: var(--coral); color: white;
+    padding: 16px 22px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+  }
+
+  /* Quote band */
+  .band {
+    background: var(--cream);
+    padding: 110px 8vw;
+    text-align: center;
+    border-top: 1px solid var(--cream-line);
+    border-bottom: 1px solid var(--cream-line);
+    position: relative;
+    overflow: hidden;
+  }
+  .band .motif-bg svg { color: var(--cream-soft); opacity: .7; bottom: -30%; }
+  .band .script { color: var(--coral); font-size: 36px; margin-bottom: 28px; display: block; font-weight: 500; position: relative; z-index: 1; }
+  .band blockquote {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: clamp(28px, 3.5vw, 48px);
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--blue);
+    position: relative; z-index: 1;
+  }
+  .band blockquote em { color: var(--coral); font-style: normal; }
+
+  /* Structure — strict 4-column grid */
+  .structure { background: var(--cream-soft); border-bottom: 1px solid var(--cream-line); }
+  .struct-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink); }
+  .struct {
+    padding: 50px 32px 56px 0;
+    border-right: 1px solid var(--cream-line);
+    position: relative;
+    transition: background .35s ease;
+  }
+  .struct:last-child { border-right: none; }
+  .struct:hover { background: var(--cream); }
+  .struct-num {
+    font-size: 11px; color: var(--coral); letter-spacing: 2.5px; font-weight: 600;
+    margin-bottom: 36px;
+  }
+  .struct h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 28px;
+    color: var(--blue);
+    margin-bottom: 14px;
+    letter-spacing: -.5px;
+    line-height: 1.1;
+  }
+  .struct h3 .division { display: block; font-size: 11px; color: var(--coral); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+  .struct p { font-size: 14px; line-height: 1.75; color: #44525E; }
+
+  /* Team — gridded portraits */
+  .team { background: var(--cream-soft); }
+  .team .motif-bg svg { color: var(--cream); opacity: .35; }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 50px; position: relative; z-index: 1; }
+  .member {
+    border-top: 1px solid var(--ink);
+    padding-top: 18px;
+  }
+  .member .avatar {
+    aspect-ratio: 4/5;
+    background: var(--cream);
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .member .avatar .placeholder {
+    position: absolute; inset: 0;
+    background: var(--blue); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 80px; font-weight: 200;
+    letter-spacing: -3px;
+  }
+  .member .avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.5); }
+  .member h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .member .role {
+    color: var(--coral);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .member p { font-size: 13px; color: #5A6772; line-height: 1.7; font-weight: 400; }
+
+  /* Projects — gridded archive style */
+  .projects { background: var(--cream-soft); border-top: 1px solid var(--cream-line); }
+  .projects .motif-bg svg { color: var(--cream); opacity: .35; left: auto; right: -10%; }
+  .project-list {
+    margin-top: 60px;
+    border-top: 1px solid var(--ink);
+    position: relative; z-index: 1;
+  }
+  .project-row {
+    display: grid;
+    grid-template-columns: 80px 1.4fr 2fr 1fr;
+    gap: 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--cream-line);
+    align-items: center;
+    transition: background .3s ease, padding-left .3s ease;
+    cursor: pointer;
+  }
+  .project-row:hover { background: var(--cream); padding-left: 12px; }
+  .project-row .pnum { font-size: 11px; color: var(--coral); letter-spacing: 2px; font-weight: 600; }
+  .project-row .pname { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 30px; color: var(--blue); letter-spacing: -.8px; line-height: 1.05; }
+  .project-row .pname em { font-style: normal; color: var(--coral); }
+  .project-row .ploc { font-size: 13px; color: var(--ink); letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+  .project-row .pmeta { font-size: 12px; color: #5A6772; text-align: right; line-height: 1.5; font-weight: 400; }
+  .project-row .pmeta strong { color: var(--coral); font-weight: 600; }
+
+  .project-thumbs {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 70px;
+    position: relative; z-index: 1;
+  }
+  .project-thumbs .thumb {
+    aspect-ratio: 4/3;
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .project-thumbs .thumb-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(244,237,214,.95);
+    padding: 10px 16px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); font-weight: 600;
+    display: flex; justify-content: space-between;
+  }
+  .project-thumbs .thumb-label span:last-child { color: var(--coral); }
+
+  /* Coral Works callout — coral panel */
+  .works {
+    background: var(--coral); color: white;
+    padding: 130px 8vw;
+    position: relative; overflow: hidden;
+  }
+  .works .motif-bg svg { color: rgba(255,255,255,.13); }
+  .works-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: end; position: relative; z-index: 1; }
+  .works .label-w {
+    color: var(--cream); font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 32px;
+  }
+  .works h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: clamp(48px, 6vw, 96px);
+    line-height: .95;
+    letter-spacing: -2.5px;
+    margin-bottom: 0;
+  }
+  .works h2 em { font-style: normal; color: var(--cream); }
+  .works p { color: rgba(255,255,255,.92); font-size: 16px; line-height: 1.85; max-width: 520px; font-weight: 400; }
+  .works .tagline-w { font-family: 'Caveat', cursive; font-size: 28px; color: var(--cream); margin-top: 24px; }
+
+  /* Footer */
+  footer {
+    background: var(--cream-soft);
+    padding: 90px 8vw 36px;
+    border-top: 1px solid var(--cream-line);
+  }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 50px; }
+  footer .brand-foot img { height: 44px; margin-bottom: 18px; }
+  footer .brand-foot .script { font-family: 'Caveat', cursive; color: var(--coral); font-size: 24px; }
+  footer h5 { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 18px; font-weight: 600; }
+  footer ul { list-style: none; }
+  footer li { font-size: 14px; color: var(--ink); margin-bottom: 8px; font-weight: 400; }
+  footer a { color: var(--ink); text-decoration: none; transition: color .3s ease; }
+  footer a:hover { color: var(--coral); }
+  .copyright { padding-top: 24px; border-top: 1px solid var(--cream-line); color: #7A8489; font-size: 12px; display: flex; justify-content: space-between; }
+  .copyright a { color: var(--coral); }
+
+  @media (max-width: 1100px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hero-bottom { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .struct-grid { grid-template-columns: repeat(2, 1fr); }
+    .struct:nth-child(2) { border-right: none; }
+    .struct:nth-child(1), .struct:nth-child(2) { border-bottom: 1px solid var(--cream-line); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .gridrule { grid-template-columns: 1fr; gap: 30px; }
+    .gridrule-side { position: static; }
+    .mission-content { grid-template-columns: 1fr; gap: 50px; }
+    .works-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-row { grid-template-columns: 60px 1fr; }
+    .project-row .ploc, .project-row .pmeta { grid-column: 2; text-align: left; }
+    .project-thumbs { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
+    nav ul { display: none; }
+    nav.scrolled { padding: 12px 22px; }
+    section { padding: 80px 22px; }
+    .hero { padding: 16vh 22px 8vh; }
+    .team-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .struct-grid { grid-template-columns: 1fr; }
+    .struct { border-right: none; border-bottom: 1px solid var(--cream-line); }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .copyright { flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#top"><img src="../assets/logo-positive.png" alt="Coral Shield"></a>
+  <ul>
+    <li><a href="#mission">Philosophy</a></li>
+    <li><a href="#structure">Structure</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+  <div class="right-action"><a href="../">← Options</a></div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M120 900 C90 760 40 640 10 540 C-10 470 -5 410 30 400 C60 395 80 440 90 500 C100 590 110 700 120 800 C125 850 122 880 120 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z M1080 900 C1110 760 1160 640 1190 540 C1210 470 1205 410 1170 400 C1140 395 1120 440 1110 500 C1100 590 1090 700 1080 800 C1075 850 1078 880 1080 900 Z"/></g></svg></div>
+
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Coral Shield · Asset Management</div>
+      <h1 class="display">Real estate,<br><span class="accent">stewarded.</span></h1>
+    </div>
+    <div class="hero-meta">
+      <span class="script">coral in motion</span>
+      <p>A boutique asset manager building, protecting and growing luxury real estate capital along the Costa del Sol — from acquisition to commercialization, under one roof.</p>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div>Founded<strong>Marbella</strong></div>
+    <div>Coverage<strong>Costa del Sol</strong></div>
+    <div>Discipline<strong>Asset · Engineering · Build</strong></div>
+    <div>Mandates<strong>By introduction</strong></div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="mission" id="mission">
+  <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
+  <div class="gridrule">
+    <div class="gridrule-side">
+      <div class="side-label">01 — Philosophy</div>
+      <div class="side-num">The Coral Shield Way</div>
+    </div>
+    <div>
+      <h2 class="title">An <em>operator,</em> not a broker.</h2>
+      <div class="mission-content">
+        <div class="mission-text">
+          <p class="lead">We do not sell property. We build, protect and grow real estate capital for a select group of clients along the Costa del Sol — with sensitivity, precision, and absolute discretion.</p>
+          <p>Founded on the conviction that wealth in real estate is not a transaction but a relationship — between a client, a place, and a generation of craft — Coral Shield brings together asset management, engineering, construction, and project leadership under one roof.</p>
+          <p>The result is a single, accountable partner from the moment a property is identified to the day its first owner steps inside.</p>
+        </div>
+        <div class="mission-image">
+          <div class="mission-image-caption">Sierra Blanca · Marbella</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Manifesto band -->
+<section class="band">
+  <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
+  <span class="script">coral in motion</span>
+  <blockquote>To elevate the management of capital onto a more <em>human, deeper,</em> and highly qualified plane.</blockquote>
+</section>
+
+<!-- Structure -->
+<section class="structure" id="structure">
+  <div class="gridrule">
+    <div class="gridrule-side">
+      <div class="side-label">02 — Structure</div>
+      <div class="side-num">Four disciplines, one team</div>
+    </div>
+    <div>
+      <h2 class="title">A single firm,<br>from <em>land</em> to <em>keys.</em></h2>
+      <div class="struct-grid">
+        <div class="struct">
+          <div class="struct-num">— 01</div>
+          <h3><span class="division">Coral Shield</span>Asset Management</h3>
+          <p>Acquisition strategy, financial structuring, capital protection and long-term performance — built around the client's wider patrimony.</p>
+        </div>
+        <div class="struct">
+          <div class="struct-num">— 02</div>
+          <h3><span class="division">Coral Works</span>Engineering & Design</h3>
+          <p>Technical due diligence, design coordination, architectural oversight. Every project begins with engineered feasibility.</p>
+        </div>
+        <div class="struct">
+          <div class="struct-num">— 03</div>
+          <h3><span class="division">Coral Works</span>Construction</h3>
+          <p>We build directly — controlling cost, calendar and craftsmanship in partnership with the finest developers of the coast.</p>
+        </div>
+        <div class="struct">
+          <div class="struct-num">— 04</div>
+          <h3><span class="division">Coral Shield</span>Project Management</h3>
+          <p>From planning permissions to keys-in-hand and final commercialization, a single director is accountable across every gate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="team">
+  <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
+  <div class="gridrule">
+    <div class="gridrule-side">
+      <div class="side-label">03 — Team</div>
+      <div class="side-num">A small atelier</div>
+    </div>
+    <div>
+      <h2 class="title">The <em>operators</em>behind every mandate.</h2>
+      <div class="team-grid">
+        <div class="member">
+          <div class="avatar"><div class="placeholder">CS</div></div>
+          <h4>[Founder Name]</h4>
+          <div class="role">Founder · CEO</div>
+          <p>Two decades structuring real estate capital across Madrid, Paris and the Costa del Sol.</p>
+        </div>
+        <div class="member">
+          <div class="avatar"><div class="placeholder">CS</div></div>
+          <h4>[Partner Name]</h4>
+          <div class="role">Partner · Asset Management</div>
+          <p>Former private banker. Builds the financial architecture behind every Coral Shield project.</p>
+        </div>
+        <div class="member">
+          <div class="avatar"><div class="placeholder">CW</div></div>
+          <h4>[Director Name]</h4>
+          <div class="role">Director · Coral Works</div>
+          <p>Civil engineer, twenty years on Costa del Sol sites. Leads engineering and construction.</p>
+        </div>
+        <div class="member">
+          <div class="avatar"><div class="placeholder">CS</div></div>
+          <h4>[Lead Name]</h4>
+          <div class="role">Head of Projects</div>
+          <p>Project lead and single point of contact, from first acquisition through final delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects — index style -->
+<section class="projects" id="projects">
+  <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
+  <div class="gridrule">
+    <div class="gridrule-side">
+      <div class="side-label">04 — Projects</div>
+      <div class="side-num">A few homes in motion</div>
+    </div>
+    <div>
+      <h2 class="title">Currently <em>under</em>our hand.</h2>
+
+      <div class="project-list">
+        <div class="project-row">
+          <div class="pnum">— 01</div>
+          <div class="pname">Villa <em>Aurora</em></div>
+          <div class="ploc">Marbella · La Zagaleta</div>
+          <div class="pmeta">2,400 m² · 2026<br><strong>€18M range</strong></div>
+        </div>
+        <div class="project-row">
+          <div class="pnum">— 02</div>
+          <div class="pname">Casa <em>del Mar</em></div>
+          <div class="ploc">Estepona · Beachfront</div>
+          <div class="pmeta">1,100 m² each · 2027<br><strong>€12M range</strong></div>
+        </div>
+        <div class="project-row">
+          <div class="pnum">— 03</div>
+          <div class="pname">Residencia <em>Olivar</em></div>
+          <div class="ploc">Benahavís · Hillside</div>
+          <div class="pmeta">3 villas · 2025<br><strong>€9M range</strong></div>
+        </div>
+        <div class="project-row">
+          <div class="pnum">— 04</div>
+          <div class="pname">[<em>Project Name</em>]</div>
+          <div class="ploc">[Location]</div>
+          <div class="pmeta">In acquisition<br><strong>Confidential</strong></div>
+        </div>
+      </div>
+
+      <div class="project-thumbs">
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=85');">
+          <div class="thumb-label"><span>Villa Aurora</span><span>2026</span></div>
+        </div>
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=85');">
+          <div class="thumb-label"><span>Casa del Mar</span><span>2027</span></div>
+        </div>
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85');">
+          <div class="thumb-label"><span>Residencia Olivar</span><span>2025</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coral Works -->
+<section class="works">
+  <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z M1080 900 C1110 760 1160 640 1190 540 C1210 470 1205 410 1170 400 C1140 395 1120 440 1110 500 C1100 590 1090 700 1080 800 C1075 850 1078 880 1080 900 Z"/></g></svg></div>
+  <div class="works-grid">
+    <div>
+      <div class="label-w">Coral Works · Construction & Engineering</div>
+      <h2>The hands behind <em>every project.</em></h2>
+    </div>
+    <div>
+      <p>Coral Works is our in-house construction and engineering arm. Costing, calendar, craftsmanship — controlled directly, with no general contractor between us and the client. The reason every Coral Shield project lands on time, on budget, and on standard.</p>
+      <div class="tagline-w">coral in motion</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="foot-grid">
+    <div class="brand-foot">
+      <img src="../assets/logo-positive.png" alt="Coral Shield">
+      <div class="script">coral in motion</div>
+    </div>
+    <div>
+      <h5>Studio</h5>
+      <ul>
+        <li>Marbella</li>
+        <li>Málaga · Spain</li>
+        <li><a href="https://www.coralshield.es">coralshield.es</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li>hello@coralshield.es</li>
+        <li>+34 ___ ___ ___</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Discretion</h5>
+      <ul>
+        <li>By introduction only.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>© Coral Shield Asset Management · All rights reserved.</span>
+    <a href="../">View other design directions →</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+</body>
+</html>
