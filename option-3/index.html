@@ -46,9 +46,9 @@
     transition: background .35s ease, backdrop-filter .35s ease, padding .35s ease;
   }
   nav.scrolled { background: rgba(217,81,76,.96); backdrop-filter: blur(14px); padding: 14px 56px; box-shadow: 0 2px 18px rgba(0,0,0,.1); }
-  nav .brand img { height: 42px; transition: height .3s ease; }
-  nav.scrolled .brand img { height: 34px; }
-  nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
+  nav .brand img { height: 56px; transition: height .3s ease; }
+  nav.scrolled .brand img { height: 44px; }
+  nav ul { display: flex; gap: 36px; list-style: none; align-items: center; margin: 0; padding: 0; }
   nav a {
     color: white; text-decoration: none; font-size: 12px;
     letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600;
@@ -58,6 +58,28 @@
   nav a:hover { opacity: 1; }
   nav .right-action { padding: 9px 18px; border: 1.5px solid rgba(255,255,255,.6); transition: background .25s ease, border-color .25s ease; }
   nav .right-action:hover { background: white; color: var(--coral-deep); border-color: white; opacity: 1; }
+
+  /* Mobile burger */
+  .burger {
+    display: none;
+    position: relative;
+    width: 40px; height: 40px;
+    background: none; border: none;
+    cursor: pointer;
+    z-index: 110;
+    padding: 0;
+  }
+  .burger span {
+    position: absolute; left: 7px; right: 7px;
+    height: 2px; background: white; border-radius: 2px;
+    transition: transform .3s ease, opacity .25s ease, top .3s ease;
+  }
+  .burger span:nth-child(1) { top: 12px; }
+  .burger span:nth-child(2) { top: 19px; }
+  .burger span:nth-child(3) { top: 26px; }
+  .burger.open span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
 
   /* Hero — bold coral red, oversized */
   .hero {
@@ -481,8 +503,28 @@
   }
   @media (max-width: 700px) {
     nav { padding: 14px 22px; }
-    nav ul { display: none; }
+    nav .brand img { height: 46px; }
+    nav.scrolled .brand img { height: 38px; }
     nav.scrolled { padding: 12px 22px; }
+    .burger { display: block; }
+    nav ul {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 105;
+      background: var(--coral);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 0; padding: 80px 24px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+    nav ul.open { opacity: 1; visibility: visible; pointer-events: auto; }
+    nav ul li { margin: 14px 0; }
+    nav ul a {
+      font-family: 'Inter', sans-serif;
+      font-size: 26px; letter-spacing: -.5px;
+      text-transform: none; font-weight: 400;
+      opacity: 1;
+    }
+    nav ul .right-action { border: 1.5px solid rgba(255,255,255,.7); padding: 10px 22px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-top: 22px; }
     section { padding: 90px 22px; }
     .hero { padding: 14vh 22px 8vh; }
     .struct { padding: 70px 22px; min-height: auto; }
@@ -604,7 +646,10 @@
 
 <nav id="nav">
   <a class="brand" href="#top"><img src="../assets/logo-coral.png" alt="Coral Shield"></a>
-  <ul>
+  <button class="burger" type="button" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="nav-menu">
     <li><a href="#mission" data-en="Philosophy">Filosofía</a></li>
     <li><a href="#personas" data-en="For whom">Para quién</a></li>
     <li><a href="#structure" data-en="Structure">Estructura</a></li>
@@ -866,6 +911,19 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // Burger menu toggle
+  const burger = document.querySelector('.burger');
+  const navMenu = document.getElementById('nav-menu');
+  function setMenu(open) {
+    burger.classList.toggle('open', open);
+    navMenu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setMenu(!navMenu.classList.contains('open')));
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 </script>
 
 <script>
