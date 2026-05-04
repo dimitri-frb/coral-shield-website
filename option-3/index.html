@@ -23,7 +23,7 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--blue);
+    background: var(--coral);
     color: white;
     -webkit-font-smoothing: antialiased;
     line-height: 1.55;
@@ -45,7 +45,7 @@
     display: flex; justify-content: space-between; align-items: center;
     transition: background .35s ease, backdrop-filter .35s ease, padding .35s ease;
   }
-  nav.scrolled { background: rgba(63,92,106,.96); backdrop-filter: blur(14px); padding: 14px 56px; box-shadow: 0 2px 18px rgba(0,0,0,.1); }
+  nav.scrolled { background: rgba(217,81,76,.96); backdrop-filter: blur(14px); padding: 14px 56px; box-shadow: 0 2px 18px rgba(0,0,0,.1); }
   nav .brand img { height: 42px; transition: height .3s ease; }
   nav.scrolled .brand img { height: 34px; }
   nav ul { display: flex; gap: 36px; list-style: none; align-items: center; }
@@ -57,12 +57,12 @@
   }
   nav a:hover { opacity: 1; }
   nav .right-action { padding: 9px 18px; border: 1.5px solid rgba(255,255,255,.6); transition: background .25s ease, border-color .25s ease; }
-  nav .right-action:hover { background: white; color: var(--blue-deep); border-color: white; opacity: 1; }
+  nav .right-action:hover { background: white; color: var(--coral-deep); border-color: white; opacity: 1; }
 
-  /* Hero — bold blue, oversized */
+  /* Hero — bold coral red, oversized */
   .hero {
     min-height: 100vh;
-    background: var(--blue);
+    background: var(--coral);
     color: white;
     position: relative;
     padding: 18vh 8vw 10vh;
@@ -192,16 +192,16 @@
     z-index: -1;
   }
 
-  /* Manifesto / quote — bold blue */
+  /* Manifesto / quote — bold coral red */
   .manifesto {
-    background: var(--blue);
+    background: var(--coral);
     color: white;
     padding: 18vh 8vw;
     text-align: left;
     position: relative;
     overflow: hidden;
   }
-  .manifesto .motif-bg svg { color: var(--blue-light); opacity: .55; width: 140%; left: -20%; }
+  .manifesto .motif-bg svg { color: var(--coral-light); opacity: .55; width: 140%; left: -20%; }
   .manifesto-content { position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; }
   .manifesto .quote-mark {
     font-family: 'Cormorant Garamond', serif;
@@ -251,10 +251,10 @@
     min-height: 480px;
     display: flex; flex-direction: column; justify-content: space-between;
   }
-  .struct.coral-c { background: var(--blue); color: white; }
+  .struct.coral-c { background: var(--coral); color: white; }
   .struct.cream-c { background: var(--cream); color: var(--ink); }
   .struct .motif-bg svg { width: 80%; }
-  .struct.coral-c .motif-bg svg { color: var(--blue-light); opacity: .5; }
+  .struct.coral-c .motif-bg svg { color: var(--coral-light); opacity: .5; }
   .struct.cream-c .motif-bg svg { color: var(--cream-soft); opacity: .85; }
   .struct-top { position: relative; z-index: 1; }
   .struct-num {
@@ -301,9 +301,9 @@
   .struct.coral-c .stamp { color: var(--cream); border-color: rgba(234,226,200,.4); }
   .struct.cream-c .stamp { color: var(--coral); border-color: rgba(242,100,95,.35); }
 
-  /* Team — blue background */
-  .team { background: var(--blue); color: white; }
-  .team .motif-bg svg { color: var(--blue-light); opacity: .45; }
+  /* Team — coral background */
+  .team { background: var(--coral); color: white; }
+  .team .motif-bg svg { color: var(--coral-light); opacity: .45; }
   .team .label { color: var(--cream); }
   .team .label::before { background: var(--cream); }
   .team h2.mega-title { color: white; }
@@ -317,7 +317,7 @@
   .member { }
   .member .avatar {
     aspect-ratio: 3/4;
-    background: var(--blue-deep);
+    background: var(--coral-deep);
     margin-bottom: 22px;
     position: relative;
     overflow: hidden;
@@ -434,14 +434,14 @@
   .works p { color: rgba(255,255,255,.88); font-size: 18px; line-height: 1.7; max-width: 720px; margin: 0 auto 32px; font-weight: 400; }
   .works .script-w { font-family: 'Caveat', cursive; color: var(--coral); font-size: 36px; font-weight: 600; }
 
-  /* Footer — blue */
+  /* Footer — coral red */
   footer {
-    background: var(--blue);
+    background: var(--coral);
     padding: 100px 8vw 36px;
     color: white;
     position: relative; overflow: hidden;
   }
-  footer .motif-bg svg { color: var(--blue-light); opacity: .35; }
+  .footer .motif-bg svg { color: var(--coral-light); opacity: .35; }
   .foot-top {
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;
     margin-bottom: 80px;
@@ -516,6 +516,83 @@
     opacity: 1; color: white; background: #F2645F;
   }
   .lang-switch .div { color: #2A3942; opacity: .2; font-size: 11px; padding: 0 2px; line-height: 1; }
+
+  /* Coral icon (from logo) as background pattern */
+  .motif-bg svg { display: none !important; }
+  .motif-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: url('../assets/coral-icon.png') no-repeat;
+    background-size: 130% auto;
+    background-position: -22% 115%;
+    opacity: .14;
+    pointer-events: none;
+  }
+  /* On coral panels: white tint of the icon */
+  .hero .motif-bg::after,
+  .manifesto .motif-bg::after,
+  .team .motif-bg::after,
+  .struct.coral-c .motif-bg::after,
+  footer .motif-bg::after {
+    filter: brightness(0) invert(1);
+    opacity: .15;
+  }
+  .works .motif-bg::after { opacity: .14; }
+  .mission .motif-bg::after, .projects .motif-bg::after, .personas .motif-bg::after {
+    background-position: 115% 115%;
+    transform: scaleX(-1);
+    opacity: .11;
+  }
+  .struct.cream-c .motif-bg::after { opacity: .14; }
+
+
+  /* Personas section */
+  .personas { background: var(--cream-soft); color: var(--ink); padding: 140px 8vw; position: relative; overflow: hidden; }
+  .personas .motif-bg::after { opacity: .1; }
+  .personas-head { max-width: 1200px; margin: 0 auto 70px; position: relative; z-index: 1; }
+  .personas .label { color: var(--coral); }
+  .personas .label::before { background: var(--coral); }
+  .personas h2.mega-title { color: var(--blue-deep); }
+  .personas h2.mega-title .it { color: var(--coral); }
+  .personas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .persona { padding: 56px 48px 60px; border-radius: 4px; position: relative; overflow: hidden; min-height: 460px; display: flex; flex-direction: column; }
+  .persona-cream { background: var(--cream); color: var(--ink); }
+  .persona-coral { background: var(--coral); color: white; }
+  .persona .p-num { font-family: 'Caveat', cursive; font-size: 30px; font-weight: 700; margin-bottom: 24px; transform: rotate(-2deg); display: inline-block; }
+  .persona-cream .p-num { color: var(--coral); }
+  .persona-coral .p-num { color: var(--cream); }
+  .persona .p-tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 18px; }
+  .persona-cream .p-tag { color: var(--coral); }
+  .persona-coral .p-tag { color: var(--cream); }
+  .persona h3 {
+    font-family: 'Inter', sans-serif; font-weight: 800;
+    font-size: clamp(34px, 3.6vw, 50px); line-height: .95;
+    letter-spacing: -1.5px; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .persona h3 .it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; text-transform: lowercase; letter-spacing: -.5px; display: block; }
+  .persona-cream h3 { color: var(--blue-deep); }
+  .persona-cream h3 .it { color: var(--coral); }
+  .persona-coral h3 .it { color: var(--cream); }
+  .persona p { font-size: 15.5px; line-height: 1.75; margin-bottom: 28px; max-width: 460px; }
+  .persona-cream p { color: #44525E; }
+  .persona-coral p { color: rgba(255,255,255,.92); }
+  .p-list { list-style: none; padding: 0; margin: auto 0 0; padding-top: 22px; border-top: 1px solid; }
+  .persona-cream .p-list { border-color: rgba(42,57,66,.18); }
+  .persona-coral .p-list { border-color: rgba(255,255,255,.25); }
+  .p-list li { padding: 6px 0; font-size: 13.5px; line-height: 1.5; padding-left: 22px; position: relative; }
+  .p-list li::before { content: '→'; position: absolute; left: 0; }
+  .persona-cream .p-list li { color: var(--ink); }
+  .persona-cream .p-list li::before { color: var(--coral); }
+  .persona-coral .p-list li { color: rgba(255,255,255,.95); }
+  .persona-coral .p-list li::before { color: var(--cream); }
+  @media (max-width: 1000px) { .personas-grid { grid-template-columns: 1fr; } .persona { min-height: auto; padding: 48px 30px; } }
+
+  .team-grid.team-grid-2 { grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; }
+  .team-grid.team-grid-2 .member .avatar { aspect-ratio: 1/1; max-width: 320px; }
+  .team-grid.team-grid-2 .member { max-width: 420px; }
+  .team-grid.team-grid-2 .member h4 { font-size: 32px; font-weight: 700; }
+  .team-grid.team-grid-2 .member .role { font-size: 12px; }
+  .team-grid.team-grid-2 .member p { font-size: 15px; }
+  @media (max-width: 700px) { .team-grid.team-grid-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -526,9 +603,10 @@
 </div>
 
 <nav id="nav">
-  <a class="brand" href="#top"><img src="../assets/logo-blue.png" alt="Coral Shield"></a>
+  <a class="brand" href="#top"><img src="../assets/logo-coral.png" alt="Coral Shield"></a>
   <ul>
     <li><a href="#mission" data-en="Philosophy">Filosofía</a></li>
+    <li><a href="#personas" data-en="For whom">Para quién</a></li>
     <li><a href="#structure" data-en="Structure">Estructura</a></li>
     <li><a href="#team" data-en="Team">Equipo</a></li>
     <li><a href="#projects" data-en="Projects">Proyectos</a></li>
@@ -541,10 +619,9 @@
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M120 900 C90 760 40 640 10 540 C-10 470 -5 410 30 400 C60 395 80 440 90 500 C100 590 110 700 120 800 C125 850 122 880 120 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z M1080 900 C1110 760 1160 640 1190 540 C1210 470 1205 410 1170 400 C1140 395 1120 440 1110 500 C1100 590 1090 700 1080 800 C1075 850 1078 880 1080 900 Z M520 900 C505 770 480 660 460 580 C445 520 440 470 460 450 C480 440 495 470 505 530 C515 600 520 700 525 790 C528 850 525 890 520 900 Z M680 900 C695 770 720 660 740 580 C755 520 760 470 740 450 C720 440 705 470 695 530 C685 600 680 700 675 790 C672 850 675 890 680 900 Z"/></g></svg></div>
 
   <div class="hero-content">
-    <img src="../assets/logo-blue.png" alt="Coral Shield Asset Management" class="hero-logo">
     <span class="tagline-script">coral in motion</span>
     <h1 class="mega" data-en="The art of &lt;span class=&quot;it&quot;&gt;stewarding&lt;/span&gt;&lt;br&gt;real estate capital.">El arte de <span class="it">cuidar</span><br>el capital inmobiliario.</h1>
-    <p class="subline" data-en="A boutique asset manager building, protecting and growing luxury real estate capital along the Costa del Sol — acquisition, engineering, construction, project leadership and commercialization, under one roof, by one team.">Un asset manager boutique que construye, protege y hace crecer el capital inmobiliario de lujo en la Costa del Sol — adquisición, ingeniería, construcción, dirección de proyecto y comercialización, bajo un mismo techo y un mismo equipo.</p>
+    <p class="subline" data-en="A boutique firm that gives investors every tool to control their real estate operation from A to Z — analysis, structuring, engineering, construction and exit. We don't sell properties; we design operations.">Una firma boutique que da al inversor todas las herramientas para controlar su operación inmobiliaria de la A a la Z — análisis, estructuración, ingeniería, construcción y desinversión. No vendemos propiedades; diseñamos operaciones.</p>
 
     <div class="hero-foot">
       <div class="url">www.coralshield.es</div>
@@ -560,10 +637,10 @@
     <div>
       <div class="label" data-en="The Coral Shield Way">El Camino Coral Shield</div>
       <span class="script-tag" data-en="a boutique, in the truest sense">una boutique, en el sentido más puro</span>
-      <h2 class="mega-title" data-en="Operator,&lt;br&gt;&lt;span class=&quot;it&quot;&gt;not broker.&lt;/span&gt;">Operador,<br><span class="it">no intermediario.</span></h2>
-      <p class="lead" data-en="We do not sell property. We build, protect and grow real estate capital for a select group of clients along the Costa del Sol — with sensitivity, precision, and absolute discretion.">No vendemos propiedades. Construimos, protegemos y hacemos crecer el capital inmobiliario para un grupo selecto de clientes en la Costa del Sol — con sensibilidad, precisión y absoluta discreción.</p>
-      <p data-en="Founded on the conviction that wealth in real estate is not a transaction but a relationship — between a client, a place, and a generation of craft — Coral Shield brings together asset management, engineering, construction, and project leadership under one roof.">Nacida del convencimiento de que la riqueza inmobiliaria no es una transacción sino una relación — entre un cliente, un lugar y una generación de oficio — Coral Shield reúne bajo un mismo techo la gestión de activos, la ingeniería, la construcción y la dirección de proyecto.</p>
-      <p data-en="The result is a single, accountable partner from the moment a property is identified to the day its first owner steps inside.">El resultado: un único interlocutor responsable, desde el momento en que se identifica una propiedad hasta el día en que su primer propietario cruza el umbral.</p>
+      <h2 class="mega-title" data-en="We don't sell properties.&lt;br&gt;&lt;span class=&quot;it&quot;&gt;We design operations.&lt;/span&gt;">No vendemos propiedades.<br><span class="it">Diseñamos operaciones.</span></h2>
+      <p class="lead" data-en="Coral Shield is a boutique firm in real estate strategy and patrimony management. We transform assets into efficient, profitable structures — minimising risk, maximising value.">Coral Shield es una firma boutique de gestión patrimonial y estrategia inmobiliaria. Transformamos activos en estructuras eficientes y rentables — minimizando el riesgo, maximizando el valor.</p>
+      <p data-en="We analyse every operation as a whole: urban-planning feasibility, fiscal structure, financial modelling and market positioning. Each decision rests on data, scenarios and clear performance metrics.">Analizamos cada operación desde una perspectiva integral: viabilidad urbanística, estructura fiscal, modelización financiera y posicionamiento de mercado. Cada decisión se apoya en datos, escenarios y métricas de rentabilidad claras.</p>
+      <p data-en="We accompany private investors, promoters and family offices through the full cycle: from identifying the opportunity to risk analysis, development, and exit. A single partner from A to Z.">Acompañamos a inversores privados, promotores y patrimonios familiares en todo el ciclo: identificación de la oportunidad, análisis de riesgos, desarrollo y desinversión. Un solo socio, de la A a la Z.</p>
     </div>
     <div class="mission-image"></div>
   </div>
@@ -574,8 +651,42 @@
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M120 900 C90 760 40 640 10 540 C-10 470 -5 410 30 400 C60 395 80 440 90 500 C100 590 110 700 120 800 C125 850 122 880 120 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z M1080 900 C1110 760 1160 640 1190 540 C1210 470 1205 410 1170 400 C1140 395 1120 440 1110 500 C1100 590 1090 700 1080 800 C1075 850 1078 880 1080 900 Z"/></g></svg></div>
   <div class="manifesto-content">
     <span class="quote-mark">"</span>
-    <blockquote data-en="To elevate the management of capital onto a more &lt;em&gt;human, deeper,&lt;/em&gt; and highly qualified plane.">Elevar la gestión del capital a un plano más <em>humano, profundo</em> y altamente cualificado.</blockquote>
+    <blockquote data-en="Performance with &lt;em&gt;purpose.&lt;/em&gt; Capital protection, asset optimisation, and lasting patrimony — built one operation at a time.">Rendimiento con <em>propósito.</em> Protección del capital, optimización del activo y patrimonio sólido — construido operación a operación.</blockquote>
     <div class="tag" data-en="— the Coral Shield way">— el camino Coral Shield</div>
+  </div>
+</section>
+
+
+<!-- Personas / for whom -->
+<section class="personas" id="personas">
+  <div class="motif-bg"></div>
+  <div class="personas-head">
+    <div class="label" data-en="For whom">Para quién</div>
+    <h2 class="mega-title" data-en="Two profiles,&lt;br&gt;one &lt;span class=&quot;it&quot;&gt;trusted&lt;/span&gt; partner.">Dos perfiles,<br>un mismo socio <span class="it">de confianza.</span></h2>
+  </div>
+  <div class="personas-grid">
+    <div class="persona persona-cream">
+      <div class="p-num">— 01</div>
+      <div class="p-tag" data-en="Professional investor">Inversor profesional</div>
+      <h3 data-en="Entering&lt;br&gt;real estate.">Entrando<br>al inmobiliario.</h3>
+      <p data-en="For investors who want to access the real estate market with institutional rigour. We give the tools to decide, control the cycle, and measure the return — without ever losing the line of sight on the operation.">Para inversores que quieren acceder al mercado inmobiliario con rigor institucional. Damos las herramientas para decidir, controlar el ciclo y medir el rendimiento — sin perder nunca de vista la operación.</p>
+      <ul class="p-list">
+        <li data-en="Operation analysis &amp; due diligence">Análisis de operación y due diligence</li>
+        <li data-en="Investment structuring &amp; risk control">Estructuración de la inversión y control de riesgos</li>
+        <li data-en="Performance tracking through to exit">Seguimiento del rendimiento hasta la desinversión</li>
+      </ul>
+    </div>
+    <div class="persona persona-coral">
+      <div class="p-num">— 02</div>
+      <div class="p-tag" data-en="Independent promoter">Promotor independiente</div>
+      <h3 data-en="Outsourcing&lt;br&gt;the expertise.">Externalizando<br>la experiencia.</h3>
+      <p data-en="For promoters who need à-la-carte support — or full turn-key delivery. From a single technical analysis to integral project direction. A trust partner to scale without compromising the standard.">Para promotores que necesitan apoyo puntual o llave en mano. Desde un análisis técnico aislado hasta la dirección integral del proyecto. Un socio de confianza para escalar sin renunciar al estándar.</p>
+      <ul class="p-list">
+        <li data-en="Technical &amp; urban-planning feasibility">Viabilidad técnica y urbanística</li>
+        <li data-en="Engineering, design &amp; construction (Coral Works)">Ingeniería, diseño y construcción (Coral Works)</li>
+        <li data-en="Integral project management — turn-key">Dirección integral del proyecto — llave en mano</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -592,10 +703,10 @@
       <div class="motif-bg right"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z"/></g></svg></div>
       <div class="struct-top">
         <div class="struct-num">— 01</div>
-        <h3 data-en="Asset&lt;span class=&quot;it&quot;&gt;management&lt;/span&gt;">Asset<span class="it">management</span></h3>
-        <p data-en="Acquisition strategy, financial structuring, capital protection and long-term performance — built around the client's wider patrimony, not a single transaction.">Estrategia de adquisición, estructuración financiera, protección del capital y rendimiento a largo plazo — construido en torno al patrimonio global del cliente, no en torno a una sola transacción.</p>
+        <h3 data-en="Asset&lt;span class=&quot;it&quot;&gt;management&lt;/span&gt;">Análisis<span class="it">y estrategia</span></h3>
+        <p data-en="Market intelligence, risk control, return metrics. Every tool the investor needs to decide with data and stay in control of the full cycle — not just a single transaction.">Inteligencia de mercado, control de riesgos, métricas de rentabilidad. Todas las herramientas que el inversor necesita para decidir con datos y mantener el control del ciclo completo — no de una sola transacción.</p>
       </div>
-      <span class="stamp" data-en="Coral Shield · Asset Management">Coral Shield · Asset Management</span>
+      <span class="stamp" data-en="Coral Shield · Strategy &amp; Analysis">Coral Shield · Análisis y Estrategia</span>
     </div>
     <div class="struct coral-c">
       <div class="motif-bg right"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z"/></g></svg></div>
@@ -633,30 +744,18 @@
   <div class="label" data-en="The Atelier">El Estudio</div>
   <h2 class="mega-title" data-en="A small team,&lt;br&gt;an &lt;span class=&quot;it&quot;&gt;uncommon&lt;/span&gt; standard.">Un equipo reducido,<br>un estándar <span class="it">poco común.</span></h2>
 
-  <div class="team-grid">
+  <div class="team-grid team-grid-2">
     <div class="member">
-      <div class="avatar"><div class="placeholder">CS</div></div>
-      <h4 data-en="[Founder]">[Fundador]</h4>
-      <div class="role" data-en="Founder · CEO">Fundador · CEO</div>
-      <p data-en="Two decades structuring real estate capital across Madrid, Paris and the Costa del Sol.">Dos décadas estructurando capital inmobiliario en Madrid, París y la Costa del Sol.</p>
+      <div class="avatar"><div class="placeholder">AS</div></div>
+      <h4>Álvaro Segura</h4>
+      <div class="role" data-en="Founding Partner">Socio Fundador</div>
+      <p data-en="Co-founder of Coral Shield. Brings the strategy, structuring and asset-management discipline behind every operation — from opportunity to exit.">Cofundador de Coral Shield. Lidera la estrategia, la estructuración y la disciplina de gestión patrimonial detrás de cada operación — desde la oportunidad hasta la desinversión.</p>
     </div>
     <div class="member">
-      <div class="avatar"><div class="placeholder">CS</div></div>
-      <h4 data-en="[Partner]">[Socio]</h4>
-      <div class="role" data-en="Partner · Asset Mgmt">Socio · Asset Mgmt</div>
-      <p data-en="Former private banker. Builds the financial architecture behind every Coral Shield project.">Ex-banquero privado. Construye la arquitectura financiera de cada proyecto Coral Shield.</p>
-    </div>
-    <div class="member">
-      <div class="avatar"><div class="placeholder">CW</div></div>
-      <h4 data-en="[Director]">[Director]</h4>
-      <div class="role" data-en="Director · Coral Works">Director · Coral Works</div>
-      <p data-en="Civil engineer, twenty years on Costa del Sol sites. Leads engineering and construction.">Ingeniero civil, veinte años en obras de la Costa del Sol. Dirige ingeniería y construcción.</p>
-    </div>
-    <div class="member">
-      <div class="avatar"><div class="placeholder">CS</div></div>
-      <h4 data-en="[Lead]">[Responsable]</h4>
-      <div class="role" data-en="Head of Projects">Director de Proyectos</div>
-      <p data-en="Project lead and single point of contact, from first acquisition through final delivery.">Responsable de proyecto y punto único de contacto, desde la primera adquisición hasta la entrega final.</p>
+      <div class="avatar"><div class="placeholder">IB</div></div>
+      <h4>Iván Boluda</h4>
+      <div class="role" data-en="Founding Partner">Socio Fundador</div>
+      <p data-en="Co-founder of Coral Shield. Leads the technical, engineering and project-management side — the connection with Coral Works and execution on the ground.">Cofundador de Coral Shield. Lidera la parte técnica, de ingeniería y dirección de proyecto — la conexión con Coral Works y la ejecución en obra.</p>
     </div>
   </div>
 </section>
@@ -665,50 +764,50 @@
 <section class="projects" id="projects">
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
   <div class="label" data-en="Selected Projects">Proyectos Seleccionados</div>
-  <h2 class="mega-title" data-en="Currently&lt;br&gt;&lt;span class=&quot;it&quot;&gt;in motion.&lt;/span&gt;"><span class="it">En movimiento</span><br>ahora mismo.</h2>
+  <h2 class="mega-title" data-en="Operations&lt;br&gt;&lt;span class=&quot;it&quot;&gt;in motion.&lt;/span&gt;">Operaciones<br><span class="it">en movimiento.</span></h2>
 
   <div class="project-grid">
     <div class="project-card">
-      <div class="img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85');">
-        <span class="img-tag" data-en="2026 · Marbella">2026 · Marbella</span>
+      <div class="img" style="background-image: url('../assets/projects/cantal.jpg');">
+        <span class="img-tag" data-en="Current project">Proyecto actual</span>
       </div>
       <div class="info">
-        <h3>Villa <span class="it">Aurora</span></h3>
-        <div class="ploc" data-en="La Zagaleta · 6 bdrm">La Zagaleta · 6 dorm.</div>
-        <p class="pdesc" data-en="A six-bedroom contemporary villa overlooking the Sierra Blanca, designed in collaboration with one of the most respected architectural studios on the coast.">Una villa contemporánea de seis dormitorios sobre la Sierra Blanca, diseñada con uno de los estudios de arquitectura más respetados de la costa.</p>
+        <h3>El <span class="it">Cantal</span></h3>
+        <div class="ploc">Pinares de San Antón · Málaga</div>
+        <p class="pdesc" data-en="Corten steel and a living roof merge with the hillside. A home that disappears into its landscape.">Acero corten y cubierta vegetal se funden con la ladera. Una vivienda que se disuelve en su paisaje.</p>
         <div class="pstats">
-          <div>Built<strong data-en="2,400 m²">2.400 m²</strong></div>
-          <div>Range<strong>€18M</strong></div>
+          <div data-en="Built">Construido<strong>550 m²</strong></div>
+          <div data-en="Rooms">Habitaciones<strong>5</strong></div>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="img" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=85');">
-        <span class="img-tag" data-en="2027 · Estepona">2027 · Estepona</span>
+      <div class="img" style="background-image: url('../assets/projects/sosiego.jpg');">
+        <span class="img-tag" data-en="Current project">Proyecto actual</span>
       </div>
       <div class="info">
-        <h3>Casa <span class="it">del Mar</span></h3>
-        <div class="ploc" data-en="Beachfront · 2 units">Primera línea · 2 unidades</div>
-        <p class="pdesc" data-en="Two front-line beach residences with private moorings — a study in Mediterranean modernism on a landmark stretch of the New Golden Mile.">Dos residencias en primera línea de playa con amarres privados — un estudio de modernismo mediterráneo en un tramo emblemático de la New Golden Mile.</p>
+        <h3><span class="it">Sosiego</span></h3>
+        <div class="ploc">Pinares de San Antón · Málaga</div>
+        <p class="pdesc" data-en="A home designed for longevity. State-of-the-art gym, sauna, infinity pool, meditation garden. Wellbeing as a way of living.">Un hogar diseñado para la longevidad. Gimnasio de última generación, sauna, piscina infinity, jardín de meditación. El bienestar como forma de vivir.</p>
         <div class="pstats">
-          <div>Each unit<strong data-en="1,100 m²">1.100 m²</strong></div>
-          <div>Range<strong>€12M</strong></div>
+          <div data-en="Built">Construido<strong>620 m²</strong></div>
+          <div data-en="Plot">Parcela<strong>1.400 m²</strong></div>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=85');">
-        <span class="img-tag" data-en="2025 · Benahavís">2025 · Benahavís</span>
+      <div class="img" style="background-image: url('../assets/projects/leoni.jpg');">
+        <span class="img-tag" data-en="Current project">Proyecto actual</span>
       </div>
       <div class="info">
-        <h3>Residencia <span class="it">Olivar</span></h3>
-        <div class="ploc" data-en="Hillside · 3 villas">Ladera · 3 villas</div>
-        <p class="pdesc" data-en="An intimate ensemble of three private residences set within an existing olive grove — restoration, new build and landscape choreographed as one project.">Un conjunto íntimo de tres residencias privadas dentro de un olivar existente — restauración, obra nueva y paisaje coreografiados como un solo proyecto.</p>
+        <h3>Leoni <span class="it">Benabu</span></h3>
+        <div class="ploc">Centro · Málaga</div>
+        <p class="pdesc" data-en="A residence in the historic heart of Málaga, undergoing an integral repositioning. Heritage and design, brought into a new cycle of value.">Una vivienda en el corazón histórico de Málaga, en proceso de reposicionamiento integral. Patrimonio y diseño llevados a un nuevo ciclo de valor.</p>
         <div class="pstats">
-          <div>Land<strong>8 ha</strong></div>
-          <div>Range<strong>€9M</strong></div>
+          <div data-en="Status">Estado<strong data-en="Repositioning">Reposicionamiento</strong></div>
+          <div data-en="District">Distrito<strong>Centro</strong></div>
         </div>
       </div>
     </div>
@@ -731,7 +830,7 @@
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z"/></g></svg></div>
   <div class="foot-top">
     <div class="brand-foot">
-      <img src="../assets/logo-blue.png" alt="Coral Shield">
+      <img src="../assets/logo-coral.png" alt="Coral Shield">
       <span class="script-f">coral in motion</span>
     </div>
     <div>
