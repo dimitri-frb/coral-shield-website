@@ -6,7 +6,7 @@
 <title>Coral Shield · Asset Management. Costa del Sol</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --coral: #F2645F;
@@ -30,7 +30,7 @@
     overflow-x: hidden;
   }
   .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
-  .script { font-family: 'Caveat', cursive; }
+  .script { font-family: 'Cormorant Garamond', serif; font-style: italic; }
 
   /* Reusable motif — bigger, more dramatic on coral */
   .motif-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -100,30 +100,29 @@
     margin-bottom: 50px;
   }
   .hero h1.mega {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: clamp(54px, 11vw, 200px);
-    line-height: .88;
-    letter-spacing: -5px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(52px, 8vw, 144px);
+    line-height: 1.0;
+    letter-spacing: -1.5px;
     margin-bottom: 36px;
-    text-transform: uppercase;
   }
   .hero h1.mega .it {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
-    text-transform: lowercase;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     color: var(--cream);
   }
   .hero .tagline-script {
-    font-family: 'Caveat', cursive;
-    font-size: clamp(38px, 4.5vw, 64px);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 1.8vw, 30px);
     color: var(--cream);
     margin-bottom: 28px;
-    font-weight: 600;
-    transform: rotate(-2deg);
-    display: inline-block;
+    font-weight: 400;
+    letter-spacing: .5px;
+    display: block;
   }
   .hero p.subline {
     max-width: 680px;
@@ -141,8 +140,11 @@
     flex-wrap: wrap; gap: 28px;
   }
   .hero-foot .url {
-    font-size: 22px; font-weight: 700;
-    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    letter-spacing: .3px;
   }
   .hero-foot .url::after {
     content: ''; display: block; width: 80px; height: 2px; background: var(--cream); margin-top: 10px;
@@ -163,22 +165,20 @@
   .label::before {
     content: ''; display: block; width: 36px; height: 2px;
   }
-  /* Section title — heavy display */
+  /* Section title — refined editorial display */
   h2.mega-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: clamp(46px, 7.5vw, 130px);
-    line-height: .9;
-    letter-spacing: -3.5px;
-    margin-bottom: 50px;
-    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5.5vw, 88px);
+    line-height: 1.04;
+    letter-spacing: -.8px;
+    margin-bottom: 44px;
   }
   h2.mega-title .it {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
-    text-transform: lowercase;
-    letter-spacing: -1.5px;
+    letter-spacing: -.5px;
   }
 
   /* Mission — cream */
@@ -189,7 +189,7 @@
   .mission h2.mega-title { color: var(--blue-deep); }
   .mission h2.mega-title .it { color: var(--coral); }
   .mission-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; align-items: center; position: relative; z-index: 1; }
-  .mission .script-tag { font-family: 'Caveat', cursive; font-size: 32px; color: var(--coral); margin-bottom: 16px; transform: rotate(-1deg); display: inline-block; font-weight: 600; }
+  .mission .script-tag { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--coral); margin-bottom: 12px; display: block; font-weight: 400; letter-spacing: .3px; }
   .mission p.lead {
     font-family: 'Inter', sans-serif;
     font-size: 24px;
@@ -214,16 +214,16 @@
     z-index: -1;
   }
 
-  /* Manifesto / quote — bold coral red */
+  /* Manifesto / quote — sober blue-deep */
   .manifesto {
-    background: var(--coral);
+    background: var(--blue-deep);
     color: white;
-    padding: 18vh 8vw;
+    padding: 16vh 8vw;
     text-align: left;
     position: relative;
     overflow: hidden;
   }
-  .manifesto .motif-bg svg { color: var(--coral-light); opacity: .55; width: 140%; left: -20%; }
+  .manifesto .motif-bg svg { color: rgba(255,255,255,.12); opacity: .55; width: 140%; left: -20%; }
   .manifesto-content { position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; }
   .manifesto .quote-mark {
     font-family: 'Cormorant Garamond', serif;
@@ -250,10 +250,12 @@
     font-weight: 400;
   }
   .manifesto .tag {
-    font-family: 'Caveat', cursive;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
     color: var(--cream);
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: .3px;
   }
 
   /* Structure — alternating bold panels */
@@ -280,30 +282,30 @@
   .struct.cream-c .motif-bg svg { color: var(--cream-soft); opacity: .85; }
   .struct-top { position: relative; z-index: 1; }
   .struct-num {
-    font-family: 'Caveat', cursive;
-    font-size: 44px;
-    font-weight: 700;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 400;
     margin-bottom: 28px;
-    transform: rotate(-2deg);
-    display: inline-block;
+    color: var(--coral);
+    letter-spacing: .3px;
+    display: block;
   }
-  .struct.coral-c .struct-num { color: var(--cream); }
-  .struct.cream-c .struct-num { color: var(--coral); }
   .struct h3 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: clamp(40px, 4.5vw, 72px);
-    line-height: .92;
-    letter-spacing: -2px;
-    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(30px, 3.4vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -.5px;
     margin-bottom: 20px;
+    color: var(--blue-deep);
   }
   .struct h3 .it {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
-    text-transform: lowercase;
-    letter-spacing: -.5px;
+    letter-spacing: -.3px;
+    color: var(--coral);
     display: block;
   }
   .struct.coral-c h3 .it { color: var(--cream); }
@@ -323,13 +325,13 @@
   .struct.coral-c .stamp { color: var(--cream); border-color: rgba(234,226,200,.4); }
   .struct.cream-c .stamp { color: var(--coral); border-color: rgba(242,100,95,.35); }
 
-  /* Team — coral background */
-  .team { background: var(--coral); color: white; }
-  .team .motif-bg svg { color: var(--coral-light); opacity: .45; }
-  .team .label { color: var(--cream); }
-  .team .label::before { background: var(--cream); }
-  .team h2.mega-title { color: white; }
-  .team h2.mega-title .it { color: var(--cream); }
+  /* Team — cream, refined */
+  .team { background: var(--cream-soft); color: var(--ink); }
+  .team .motif-bg::after { opacity: .1; }
+  .team .label { color: var(--coral); }
+  .team .label::before { background: var(--coral); }
+  .team h2.mega-title { color: var(--blue-deep); }
+  .team h2.mega-title .it { color: var(--coral); }
 
   .team-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
@@ -339,10 +341,11 @@
   .member { }
   .member .avatar {
     aspect-ratio: 3/4;
-    background: var(--coral-deep);
+    background: var(--cream);
     margin-bottom: 22px;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(86,118,132,.18);
   }
   .member .avatar .placeholder {
     position: absolute; inset: 0;
@@ -354,23 +357,22 @@
   }
   .member .avatar img { width: 100%; height: 100%; object-fit: cover; }
   .member h4 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--blue-deep);
     margin-bottom: 4px;
     letter-spacing: -.3px;
-    text-transform: uppercase;
   }
   .member .role {
-    color: var(--cream);
+    color: var(--coral);
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 10px;
   }
-  .member p { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.7; }
+  .member p { font-size: 14.5px; color: #44525E; line-height: 1.75; }
 
   /* Projects — cream with bold coral cards */
   .projects { background: var(--cream-soft); color: var(--ink); }
@@ -405,13 +407,12 @@
   }
   .project-card .info { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; }
   .project-card h3 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: 30px;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    line-height: 1;
-    margin-bottom: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -.5px;
+    line-height: 1.05;
+    margin-bottom: 6px;
     color: var(--blue-deep);
   }
   .project-card h3 .it {
@@ -419,8 +420,7 @@
     font-style: italic;
     font-weight: 400;
     color: var(--coral);
-    text-transform: lowercase;
-    letter-spacing: -.5px;
+    letter-spacing: -.3px;
   }
   .project-card .ploc { font-size: 11px; color: var(--coral); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
   .project-card .pdesc { font-size: 14px; color: #44525E; line-height: 1.7; margin-bottom: 24px; flex: 1; }
@@ -444,17 +444,16 @@
   .works .label { color: var(--coral); justify-content: center; }
   .works .label::before { background: var(--coral); }
   .works h2 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: clamp(48px, 7vw, 120px);
-    line-height: .92;
-    letter-spacing: -3px;
-    text-transform: uppercase;
-    margin-bottom: 36px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5.5vw, 80px);
+    line-height: 1.04;
+    letter-spacing: -.8px;
+    margin-bottom: 32px;
   }
-  .works h2 .it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--coral); text-transform: lowercase; letter-spacing: -1px; }
+  .works h2 .it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--coral); letter-spacing: -.5px; }
   .works p { color: rgba(255,255,255,.88); font-size: 18px; line-height: 1.7; max-width: 720px; margin: 0 auto 32px; font-weight: 400; }
-  .works .script-w { font-family: 'Caveat', cursive; color: var(--coral); font-size: 36px; font-weight: 600; }
+  .works .script-w { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--coral); font-size: 22px; font-weight: 400; letter-spacing: .3px; }
 
   /* Footer — coral red */
   footer {
@@ -471,7 +470,7 @@
     position: relative; z-index: 1;
   }
   .foot-top .brand-foot img { height: 64px; margin-bottom: 24px; }
-  .foot-top .brand-foot .script-f { font-family: 'Caveat', cursive; color: var(--cream); font-size: 32px; font-weight: 600; transform: rotate(-2deg); display: inline-block; }
+  .foot-top .brand-foot .script-f { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--cream); font-size: 22px; font-weight: 400; display: block; letter-spacing: .3px; }
   .foot-top h5 { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--cream); margin-bottom: 20px; font-weight: 700; }
   .foot-top ul { list-style: none; }
   .foot-top li { font-size: 15px; color: rgba(255,255,255,.92); margin-bottom: 8px; font-weight: 400; }
@@ -479,14 +478,13 @@
   .foot-top a:hover { color: var(--cream); }
   .foot-url {
     text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: clamp(44px, 8vw, 130px);
-    letter-spacing: -3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 96px);
+    letter-spacing: -.8px;
     line-height: 1;
     margin-bottom: 50px;
     position: relative; z-index: 1;
-    text-transform: lowercase;
   }
   .foot-url::after {
     content: ''; display: block; width: 80px; height: 2px; background: var(--cream); margin: 20px auto 0;
@@ -628,18 +626,18 @@
   .persona { padding: 56px 48px 60px; border-radius: 4px; position: relative; overflow: hidden; min-height: 460px; display: flex; flex-direction: column; }
   .persona-cream { background: var(--cream); color: var(--ink); }
   .persona-coral { background: var(--coral); color: white; }
-  .persona .p-num { font-family: 'Caveat', cursive; font-size: 30px; font-weight: 700; margin-bottom: 24px; transform: rotate(-2deg); display: inline-block; }
+  .persona .p-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; font-weight: 400; margin-bottom: 24px; display: block; letter-spacing: .3px; }
   .persona-cream .p-num { color: var(--coral); }
   .persona-coral .p-num { color: var(--cream); }
   .persona .p-tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 18px; }
   .persona-cream .p-tag { color: var(--coral); }
   .persona-coral .p-tag { color: var(--cream); }
   .persona h3 {
-    font-family: 'Inter', sans-serif; font-weight: 800;
-    font-size: clamp(34px, 3.6vw, 50px); line-height: .95;
-    letter-spacing: -1.5px; text-transform: uppercase; margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(28px, 3.2vw, 44px); line-height: 1.05;
+    letter-spacing: -.5px; margin-bottom: 24px;
   }
-  .persona h3 .it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; text-transform: lowercase; letter-spacing: -.5px; display: block; }
+  .persona h3 .it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; letter-spacing: -.3px; display: block; }
   .persona-cream h3 { color: var(--blue-deep); }
   .persona-cream h3 .it { color: var(--coral); }
   .persona-coral h3 .it { color: var(--cream); }
@@ -782,7 +780,7 @@
       </div>
       <span class="stamp" data-en="Coral Shield · Strategy &amp; Analysis">Coral Shield · Análisis y Estrategia</span>
     </div>
-    <div class="struct coral-c">
+    <div class="struct cream-c">
       <div class="motif-bg right"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z"/></g></svg></div>
       <div class="struct-top">
         <div class="struct-num">02</div>
@@ -791,7 +789,7 @@
       </div>
       <span class="stamp" data-en="Coral Works · Engineering">Coral Works · Ingeniería</span>
     </div>
-    <div class="struct coral-c">
+    <div class="struct cream-c">
       <div class="motif-bg right"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z"/></g></svg></div>
       <div class="struct-top">
         <div class="struct-num">03</div>
