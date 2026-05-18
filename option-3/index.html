@@ -81,19 +81,33 @@
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
 
-  /* Hero — bold coral red, oversized */
+  /* Hero — video background + coral overlay */
   .hero {
     min-height: 100vh;
-    background: var(--coral);
+    background: var(--coral); /* fallback while video loads */
     color: white;
     position: relative;
     padding: 18vh 8vw 10vh;
     overflow: hidden;
     display: flex; flex-direction: column; justify-content: center;
   }
+  .hero-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(217,81,76,.45) 0%, rgba(242,100,95,.5) 50%, rgba(217,81,76,.78) 100%);
+    z-index: 1;
+  }
+  .hero .motif-bg { z-index: 2; }
+  .hero .motif-bg::after { opacity: .12; filter: brightness(0) invert(1); }
   .hero .motif-bg svg { color: rgba(255,255,255,.13); width: 130%; left: -15%; bottom: -15%; }
 
-  .hero-content { position: relative; z-index: 2; max-width: 1400px; }
+  .hero-content { position: relative; z-index: 3; max-width: 1400px; }
   .hero-logo {
     display: block;
     width: 540px; max-width: 80%;
@@ -688,6 +702,10 @@
 
 <!-- Hero -->
 <section class="hero" id="top">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="../assets/projects/cantal.jpg">
+    <source src="../assets/video/coral-shield-intro.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
   <div class="motif-bg"><svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice"><g fill="currentColor"><path d="M600 900 C575 700 555 500 565 320 C570 220 590 120 605 80 C615 60 625 70 635 110 C650 200 660 320 655 460 C645 600 625 740 600 900 Z M450 900 C420 720 380 560 340 410 C310 290 290 180 305 110 C315 80 340 75 355 110 C375 170 385 270 385 370 C385 490 400 640 425 770 C440 840 450 880 450 900 Z M280 900 C250 740 200 600 150 470 C115 370 95 280 110 220 C125 180 165 195 185 240 C210 305 220 390 220 470 C220 580 235 700 255 800 C270 860 280 890 280 900 Z M120 900 C90 760 40 640 10 540 C-10 470 -5 410 30 400 C60 395 80 440 90 500 C100 590 110 700 120 800 C125 850 122 880 120 900 Z M750 900 C780 720 820 560 860 410 C890 290 910 180 895 110 C885 80 860 75 845 110 C825 170 815 270 815 370 C815 490 800 640 775 770 C760 840 750 880 750 900 Z M920 900 C950 740 1000 600 1050 470 C1085 370 1105 280 1090 220 C1075 180 1035 195 1015 240 C990 305 980 390 980 470 C980 580 965 700 945 800 C930 860 920 890 920 900 Z M1080 900 C1110 760 1160 640 1190 540 C1210 470 1205 410 1170 400 C1140 395 1120 440 1110 500 C1100 590 1090 700 1080 800 C1075 850 1078 880 1080 900 Z M520 900 C505 770 480 660 460 580 C445 520 440 470 460 450 C480 440 495 470 505 530 C515 600 520 700 525 790 C528 850 525 890 520 900 Z M680 900 C695 770 720 660 740 580 C755 520 760 470 740 450 C720 440 705 470 695 530 C685 600 680 700 675 790 C672 850 675 890 680 900 Z"/></g></svg></div>
 
   <div class="hero-content">
