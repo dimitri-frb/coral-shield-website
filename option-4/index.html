@@ -162,17 +162,20 @@
   .persona-row h3 { font-size: 30px; font-weight: 400; letter-spacing: -.6px; line-height: 1.1; margin-bottom: 18px; }
   .persona-row p { font-size: 15px; color: var(--grey); line-height: 1.7; max-width: 480px; }
 
-  /* Projects */
-  .projects-list { border-top: 1px solid var(--rule); }
-  .project-row {
-    display: grid; grid-template-columns: minmax(180px, 1fr) 1.3fr 1.2fr;
-    gap: 40px;
-    padding: 28px 0; border-bottom: 1px solid var(--rule);
-    align-items: center;
-    text-decoration: none; color: inherit;
-    transition: padding-left .35s ease, background .35s ease;
+  /* Projects — 3-column grid */
+  .projects-list {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    border-top: 1px solid var(--rule);
+    padding-top: 44px;
   }
-  .project-row:hover { padding-left: 14px; background: rgba(242,100,95,.04); }
+  .project-row {
+    display: flex; flex-direction: column;
+    gap: 18px;
+    text-decoration: none; color: inherit;
+    transition: transform .35s ease;
+  }
+  .project-row:hover { transform: translateY(-4px); }
   .project-row .pimg { aspect-ratio: 3/2; overflow: hidden; background: var(--bg-soft); }
   .project-row .pimg img {
     width: 100%; height: 100%; object-fit: cover;
@@ -180,9 +183,9 @@
     transition: transform .8s ease, filter .5s ease;
   }
   .project-row:hover .pimg img { transform: scale(1.05); filter: grayscale(0) brightness(1); }
-  .project-row .pinfo h3 { font-size: 28px; font-weight: 400; letter-spacing: -.5px; margin-bottom: 6px; }
-  .project-row .ploc { font-size: 12px; color: var(--grey); letter-spacing: 1.5px; text-transform: uppercase; }
-  .project-row .pdesc { font-size: 14.5px; color: var(--grey); line-height: 1.7; max-width: 400px; }
+  .project-row .pinfo h3 { font-size: 24px; font-weight: 500; letter-spacing: -.4px; margin-bottom: 6px; color: var(--ink); }
+  .project-row .ploc { font-size: 11px; color: var(--grey); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+  .project-row .pdesc { font-size: 14.5px; color: var(--grey); line-height: 1.65; }
 
   /* Team */
   .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; max-width: 1000px; }
@@ -261,6 +264,7 @@
     .hero-grid { grid-template-columns: 1fr; gap: 50px; align-items: start; }
     .hero { padding: 18vh 8vw 80px; }
     .hero-media { aspect-ratio: 16/10; max-height: 60vh; }
+    .projects-list { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   }
 
   /* Mobile */
@@ -299,9 +303,10 @@
     .cap p, .persona-row p { grid-column: 2; margin-top: 14px; max-width: 100%; }
     .cap h3 { font-size: 21px; }
     .persona-row h3 { font-size: 23px; }
-    .project-row { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
-    .project-row:hover { padding-left: 0; }
-    .project-row .pinfo h3 { font-size: 23px; }
+    .projects-list { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; }
+    .project-row { gap: 14px; }
+    .project-row:hover { transform: none; }
+    .project-row .pinfo h3 { font-size: 22px; }
     .team-grid { grid-template-columns: 1fr; gap: 44px; }
     .member .avatar { aspect-ratio: 1/1; max-width: 220px; }
     .member .avatar .initials { font-size: 56px; }
@@ -349,7 +354,6 @@
 <section class="hero" id="top">
   <div class="hero-grid">
     <div class="hero-text">
-      <div class="hero-eyebrow">Coral Shield · Costa del Sol</div>
       <h1 data-en="We don't sell properties.&lt;br&gt;We &lt;span class=&quot;accent&quot;&gt;design operations&lt;/span&gt;.">No vendemos propiedades.<br><span class="accent">Diseñamos operaciones.</span></h1>
       <div class="scroll-cue" data-en="Scroll to discover">Descubrir</div>
     </div>
